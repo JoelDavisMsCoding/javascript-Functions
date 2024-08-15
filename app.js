@@ -126,8 +126,8 @@ console.log(storedKelvin);
 let storedFarenheit = celsiusToFarenheit(tempNum);
 console.log(storedFarenheit);
 
-//Daily Temperatures
-let temperatures = [72, 75, 79, 83, 78, 85, 90];
+//TempAverage
+let temperatures = [72, 75, 90, 83, 78, 85, 79];
 function TempAverage()
 {
     let tempTotal = 0;
@@ -137,13 +137,41 @@ function TempAverage()
     }
     return tempTotal
 }
-let temperatures = [72, 75, 79, 83, 78, 85, 90];
-function TempAverage()
+function TempHighest()
 {
-    let tempTotal = 0;
+    let tempHighest = 0;
     for (let i = 0; i < temperatures.length; i++)
     {
-        tempTotal += temperatures[i];
+        if (temperatures[i] > tempHighest)
+        {
+            tempHighest = temperatures[i];
+        }
     }
-    return tempTotal
+    return tempHighest;
 }
+function TempLowest()
+{
+    let tempLowest = 0;
+    let tempHighest = 0;
+    for (let i = 0; i < temperatures.length; i++)
+    {
+        if (temperatures[i] > tempHighest)
+        {
+            tempHighest = temperatures[i];
+        }
+    }
+    debugger
+    for (let i = 0; i < temperatures.length; i++)
+    {
+        tempTracker = temperatures[i];
+        if (tempTracker < tempHighest)
+        {
+            tempLowest = tempTracker;
+        }
+    }
+    return tempLowest;
+}
+let highestTemp = TempHighest();
+console.log(`Temperature Highest: ${highestTemp}°`);
+let lowestTemp = TempLowest();
+console.log(`Temperature Lowest: ${lowestTemp}°`);
